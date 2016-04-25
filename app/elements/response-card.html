@@ -1,0 +1,48 @@
+
+<link rel="import" href="waverley-checker.html">
+<link rel="import" href="checker-login.html">
+<link rel="import" href="checkr-card.html">
+<link rel="import" href="response-card.html">
+<link rel="import" href="x-app.html">
+<dom-module id="response-card">
+  <template>
+    <style include="iron-flex iron-flex-alignment"></style>
+    <style include="shared-styles"></style>
+
+    <paper-material elevation="1">
+      <div class="horizontal layout wrap">
+        <h1>{{name}}</h1>
+        <span class="flex"></span>
+        <h4 class="email">{{email}}</h4>
+      </div>
+      <div class="content">
+        <p>
+          {{content}}
+        </p>
+      </div>
+      <div class="horizontal layout center wrap">
+        <span class="date">{{date}}</span>
+        <span class="flex"></span>
+        <a href="mailto:{{email}}?Subject={{subject}}" target="_blank">
+          <paper-button raised>Reply</paper-button>
+        </a>
+      </div>
+    </paper-material>
+
+  </template>
+  <script>
+    Polymer({
+      is: 'response-card',
+      properties: {
+        name: {type: String},
+        email: {type: String},
+        subject: {type: String},
+        content: {type: String},
+        key: {type: String},
+      //  siteThemePrimary: {type: String},
+      //  siteThemeSecondary: {type: String},
+      },
+
+    });
+  </script>
+</dom-module>

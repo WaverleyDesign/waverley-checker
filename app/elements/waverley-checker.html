@@ -1,0 +1,52 @@
+<link rel="import" href="waverley-checker.html">
+<link rel="import" href="checker-login.html">
+<link rel="import" href="checkr-card.html">
+<link rel="import" href="response-card.html">
+<link rel="import" href="x-app.html">
+
+
+<dom-module id="waverley-checker">
+  <template>
+    <style include="shared-styles"></style>
+
+
+
+    <checker-login name="{{name}}" location="{{property}}">
+      <!--protected content begins here-->
+      <h1>Your Form Responses</h1>
+
+      <firebase-collection
+        order-by-child="date"
+        location="{{property}}"
+        data="{{responses}}"></firebase-collection>
+      <template is="dom-repeat" items="[[responses]]" as="response">
+        <response-card
+          name="[[response.name]]"
+          email="[[response.email]]"
+          content="[[response.content]]"
+          date="[[response.date]]"
+          subject="[[response.subject]]"
+          key="[[response.__firebaseKey__]]"
+        ></response-card>
+      </template>
+
+      </checker-login>
+
+  </template>
+  <script>
+    Polymer({
+      is: 'waverley-checker',
+      properties: {
+        property: {type: String},
+        primary: {type: String},
+        secondary: {type: String},
+        name: {type: String}
+      },
+      ready: function() {
+        this.customStyle['--site-theme-primary'] = this.primary;
+        this.customStyle['--site-theme-secondary'] = this.secondary;
+        this.updateStyles();
+      },
+    });
+  </script>
+</dom-module>

@@ -1,0 +1,69 @@
+<link rel="import" href="waverley-checker.html">
+<link rel="import" href="checker-login.html">
+<link rel="import" href="checkr-card.html">
+<link rel="import" href="response-card.html">
+<link rel="import" href="x-app.html">
+<dom-module id="checkr-card">
+  <template>
+    <style include="shared-styles"></style>
+    <style>
+      paper-dialog {
+        width: 100%;
+        height: 100%;
+      }
+    </style>
+
+    <iron-media-query query="(min-width: 0) and (max-width: 1000px)" query-matches="{{mobile}}">
+    </iron-media-query>
+
+
+    <template is="dom-if" if="{{!mobile}}" restamp="true">
+      <paper-card image="{{image}}">
+          <div class="card-actions">
+            <paper-button on-tap="toggle">{{property}}</paper-button>
+
+          </div>
+        </paper-card>
+      </template>
+      <template is="dom-if" if="{{mobile}}" restamp="true">
+        <paper-material on-tap="toggle" elevation="1">
+          <h4>{{property}}</h4>
+        </paper-material>
+      </template>
+
+      <paper-dialog id="dialog">
+        <paper-toolbar class="special-toolbar">
+          <div class="app-name">
+            <span class="waverley">Waverley</span><span class="checker">Checker</span>
+          </div>
+          <span class="flex"></span>
+          <paper-icon-button icon="close" dialog-dismiss></paper-icon-button>
+        </paper-toolbar>
+        <div class="scrollable">
+          <waverley-checker
+            name="{{property}}"
+            property="{{url}}"
+            primary="{{primary}}"
+            secondary="{{secondary}}"
+          ></waverley-checker>
+        </div>
+
+      </paper-dialog>
+
+  </template>
+  <script>
+    Polymer({
+      is: 'checkr-card',
+      properties: {
+        image: {type: String, value: ''},
+        url: {type: String, value: ''},
+        property: {type: String, value: ''},
+        primary: {type: String},
+        secondary: {type: String},
+      },
+      toggle: function () {
+        this.$.dialog.toggle();
+      },
+    });
+  </script>
+</dom-module>

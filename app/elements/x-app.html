@@ -1,0 +1,56 @@
+<link rel="import" href="waverley-checker.html">
+<link rel="import" href="checker-login.html">
+<link rel="import" href="checkr-card.html">
+<link rel="import" href="response-card.html">
+<link rel="import" href="x-app.html">
+<dom-module id="x-app">
+  <template>
+    <style include="shared-styles"></style>
+
+
+    <paper-toolbar>
+      <div class="app-name">
+        <span class="waverley">Waverley</span><span class="checker">Checker</span>
+      </div>
+      <div class="flex"></div>
+    <span>{{property}}</span>
+    </paper-toolbar>
+<div class="page">
+  <google-sheets id="sheet" key="1EPHQ4n0UK8CrVVGUYWU1FAt93bW8gUeAmCncc7zAgCw" tab-id="1"
+                   published rows="{{rows}}" tab="{{tab}}" open-in-google-docs-url="{{openInGoogleDocsUrl}}"></google-sheets>
+
+
+      <h1>Welcome.</h1>
+      <h4>Choose your property to begin.</h4>
+
+      <template is="dom-repeat" items="[[rows]]">
+        <checkr-card
+          url="{{item.gsx$url.$t}}"
+          property="{{item.gsx$property.$t}}"
+          image="{{item.gsx$favicon.$t}}"
+          primary="{{item.gsx$primary.$t}}"
+          secondary="{{item.gsx$secondary.$t}}"
+        ></checkr-card>
+      </template>
+
+</div>
+
+<footer>
+  <a href="http://www.waverleydesigncompany.com">
+    <span class="waverley else">Waverley</span>
+    <span class="designcompany ">Design Company</span>
+  </a>
+</footer>
+
+
+
+  </template>
+  <script>
+    Polymer({
+      is: 'x-app',
+      toggle: function () {
+        this.$.dialog.toggle();
+      },
+    });
+  </script>
+</dom-module>

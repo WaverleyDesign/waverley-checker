@@ -1,0 +1,115 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/paper-styles/typography.html">
+
+<!-- shared styles for all elements and index.html -->
+<dom-module id="shared-styles">
+  <template>
+    <style>
+      .page-title {
+        @apply(--paper-font-display2);
+      }
+
+      paper-menu a > *, paper-menu paper-item > *, paper-menu paper-icon-item > * {
+        pointer-events: none;
+      }
+
+      @media (max-width: 600px) {
+        .page-title {
+          font-size: 24px!important;
+        }
+      }
+
+      paper-toolbar {
+        background-color: white;
+      }
+      .waverley {
+        color: var(--paper-green-500);
+        @apply(--paper-font-title);
+        font-weight: 300;
+        font-size: 20px;
+      }
+      .checker {
+        color: black;
+        @apply(--paper-font-title);
+        font-weight: 500;
+        font-size: 20px;
+      }
+
+      h1,h2,h3,h4,h5,h6 {
+        font-weight: 400;
+      }
+
+      paper-material {
+        padding: 16px;
+        background-color: white;
+      }
+
+      paper-card {
+        width: calc(25% - 35px);
+        padding: 8px;
+        margin: 16px;
+      }
+
+      paper-dialog {
+        margin: 0px;
+        background-color: #fafafa;
+        overflow-y: scroll;
+      }
+
+      .special-toolbar {
+        margin-top: 0px;
+        padding: 0px;
+        color: black;
+        position: fixed;
+        z-index: 2;
+        width: 100%
+      }
+
+
+      div.page {
+        padding: 48px 62px;
+      }
+
+      footer {
+        padding: 32px;
+      }
+      span.designcompany {
+        color: black;
+        font-size: 16px;
+      }
+      span.waverley.else {
+        color: #4caf50;
+        font-size: 16px;
+      }
+
+      a {
+        text-decoration: none
+      }
+
+
+
+      /* Theming */
+
+      paper-input {
+        --paper-input-container-focus-color: var(--site-theme-primary)
+      }
+
+      paper-button {
+        color: var(--site-theme-primary, green);
+      }
+
+      paper-button [raised] {
+        background-color: var(--site-theme-primary, green);
+        color: white;
+      }
+
+      a {
+        color: var(--site-theme-primary, green);
+      }
+
+      span.date, h4.email {
+        color: var(--site-theme-primary);
+      }
+    </style>
+  </template>
+</dom-module>
